@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+{% extends 'adminheader.html' %}
+
+{% block body_block %}
+<h1>Leave Details</h1>
+<div class="container">
+<a href="/addleave" class="btn btn-primary">Add leave</a>
+  <table class="table table-striped table-bordered table-sm">
+    <thead class="thead-dark">
+    <tr>
+      <th> Employee Name </th>
+      <th> No of days of leave</th>
+      <th> Reason </th>
+      <th> Actions </th>
+    </tr>
+    </thead>
+
+    <tbody>
+  {% for empleave in empleaves %}
+
+      <tr>
+        <td> {{ empleave.first_name }} </td>
+        <td> {{ empleave.leave_days}} </td>
+        <td> {{empleave.leave_reason }} </td>
+
+
+        <td>
+          <a href="/editleave/{{ empleave.id }}">Edit</a>
+          <a href="/deleteleave/{{ empleave.id }}">Delete</a>
+        </td>
+      </tr>
+  {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
+
+</body>
+</html>

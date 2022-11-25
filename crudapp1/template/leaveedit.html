@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% extends 'adminheader.html' %}
+
+{% block body_block %}
+<div class="container">
+<form method="POST" class="post-form" action="/updateleave/{{empleave.id}}">
+    {% csrf_token %}
+    <div class="container">
+<br>
+        <div class="form-group row">
+            <label class="col-sm-1 col-form-label"></label>
+            <div class="col-sm-4">
+                <h3> Update Details </h3>
+            </div>
+        </div>
+   <!--     <div class="form-group row">   -->
+   <!--         <label class="col-sm-2 col-form-label">Id:</label> -->
+   <!--         <div class="col-sm-4">   -->
+   <!--  <input type="text" name="eid" id="eid" required maxlength="20" value="{{empleave.id}}"/> -->
+   <!--         </div> -->
+   <!--     </div> -->
+
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Name:</label>
+            <div class="col-sm-4">
+                <select name="first_name" id="first_name">
+                {% for employee in employees %}
+                {% if employee.eid == empleave.first_name %}
+                 <option selected value="{{ employee.eid }}">{{ employee.ename }}</option>
+                {% else %}
+                    <option  value="{{ employee.eid }}">{{ employee.ename }}</option>
+                {% endif %}
+
+                {% endfor %}
+                    </select>
+            </div>
+        </div>
+
+                <div class="form-group row">
+            <label class="col-sm-2 col-form-label">No of days of leave:</label>
+            <div class="col-sm-4">
+                <input type ="text" name="leave_days" id="leave_days" required maxlength="25" value="{{empleave.leave_days}}"/>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Reason:</label>
+            <div class="col-sm-4">
+                <input type="text" name="leave_reason" id="leave_reason" required maxlength="300" value="{{empleave.leave_reason}}" />
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-4">
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+</div>
+{% endblock %}
+
+</body>
+</html>

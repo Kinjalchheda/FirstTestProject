@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% extends 'adminheader.html' %}
+
+{% block body_block %}
+<div class="container">
+    <h1> Add Leave </h1>
+    <form method="post" class="post-form" action="/addleave/">
+        {% csrf_token %}
+        <br>
+
+        <div class="form-group-row">
+            <label class="col-sm-1 col-form-label"></label>
+            <div class="col-sm-4"></div>
+        </div>
+
+        <div class="form-group-row">
+            <label class="col-sm-1 col-form-label">Employee Name</label>
+            <div class="col-sm-4">
+                {{ form.first_name }}
+            </div>
+        </div>
+
+        <div class="form-group-row">
+            <label class="col-sm-1 col-form-label">No of days of leave</label>
+            <div class="col-sm-4">
+                {{ form.leave_days }}
+            </div>
+        </div>
+
+        <div class="form-group-row">
+            <label class="col-sm-1 col-form-label">Reason</label>
+            <div class="col-sm-4">
+                {{ form.leave_reason }}
+            </div>
+        </div>
+
+        <div class="form-group-row">
+            <label class="col-sm-1 col-form-label"></label>
+            <div class="col-sm-4">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+
+ {% endblock %}
+    </form>
+</div>
+
+</body>
+</html>
